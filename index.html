@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reciden - Discover and Share Recipes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <img src="https://i.ibb.co/HtHyjW3/image.jpg" alt="Reciden Logo" class="brand-logo">
+            <div>
+                <h1>Reciden</h1>
+                <p class="tagline">For Foodies, By Foodies!!</p>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#recipes">Recipes</a></li>
+                <li><a href="#meal-planner">Meal Plan</a></li>
+                <li><a href="#submit-recipes">Submit Recipes</a></li>
+                <li><a href="#about-us">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Discover and Share Recipes with <span>Reciden</span></h1>
+        <p>Explore delicious recipes, meal plans, and more. Create your own culinary story!</p>
+        <button class="cta-button">Get Recipes</button>
+    </section>
+
+    <!-- Recipe Section -->
+    <section id="recipes" class="recipe-section">
+        <h2>Recipes</h2>
+        <div class="recipe-carousel">
+            <button class="arrow left-arrow" onclick="scrollLeft()">←</button>
+            <div class="recipes-container">
+                <!-- Recipe Cards -->
+                <div class="recipe-card">
+                    <img src="https://via.placeholder.com/300" alt="Recipe 1 Image">
+                    <div class="recipe-info">
+                        <h3>Bruschetta with Avocado and Egg</h3>
+                        <p class="author">- Mad</p>
+                        <div class="details">
+                            <span>Easy</span>
+                            <span>10</span>
+                            
+                        </div>
+                        <p class="description">This bruschetta is a light and stylish breakfast, perfect for a quick meal.</p>
+                        <div class="actions">
+                            <button class="view-btn" data-recipe-id="1">View Meal</button>
+                            <button class="add-btn" onclick="addToMealPlan('Bruschetta with Avocado and Egg')">Add to Meal Plan</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="recipe-card">
+                    <img src="https://via.placeholder.com/300" alt="Recipe 2 Image">
+                    <div class="recipe-info">
+                        <h3>Cheese Soufflé</h3>
+                        <p class="author">- MD</p>
+                        <div class="details">
+                            <span>Easy</span>
+                            <span>15</span>
+                            
+                        </div>
+                        <p class="description">This cheese soufflé is an easy, quick, and tasty breakfast.</p>
+                        <div class="actions">
+                            <button class="view-btn" data-recipe-id="2">View Meal</button>
+                            <button class="add-btn" onclick="addToMealPlan('Cheese Soufflé')">Add to Meal Plan</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="recipe-card">
+                    <img src="https://via.placeholder.com/300" alt="Recipe 3 Image">
+                    <div class="recipe-info">
+                        <h3>Pancakes</h3>
+                        <p class="author">- Maddy</p>
+                        <div class="details">
+                            <span>Easy</span>
+                            <span>20</span>
+                            
+                        </div>
+                        <p class="description">These pancakes are perfect for breakfast or a snack.</p>
+                        <div class="actions">
+                            <button class="view-btn" data-recipe-id="3">View Meal</button>
+                            <button class="add-btn" onclick="addToMealPlan('Pancakes')">Add to Meal Plan</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="arrow right-arrow" onclick="scrollRight()">→</button>
+        </div>
+    </section>
+
+        <!-- Your Meal Plan Section -->
+        <section id="meal-planner" class="meal-planner-section">
+            <h2>Meal Plan</h2>
+            <div class="meal-plans-container">
+                <div class="meal-plan-card">
+                    
+                    <ul id="meal-plan-list">
+                        <li>Bruschetta with Avocado and Egg</li>
+                        <li>Pancakes</li>
+                    </ul>
+                </div>
+            <button class="clear-plans-btn" onclick="clearMealPlan()">Clear Plans</button>
+        </section>
+
+    <!-- Culinary Box -->
+    <div id="culinary-box" class="culinary-box">
+        <div class="culinary-box-content">
+            <button class="close-btn" onclick="closeCulinaryBox()">×</button>
+        </div>
+    </div>
+    
+    <!-- Custom Alert Modal -->
+<div id="custom-alert" class="custom-alert">
+    <div class="alert-content">
+        <p id="alert-message"></p>
+        <button class="close-alert" onclick="closeAlert()">OK</button>
+    </div>
+</div>
+
+          <section id="submit-recipes" class="submit-recipes-section">
+    <h1>Submit Recipes</h1>
+    <form id="recipe-form" class="recipe-form">
+        <label for="chef-name">Chef Name</label>
+        <input type="text" id="chef-name" name="chef-name" placeholder="Enter your name" required />
+
+        <label for="recipe-name">Recipe Name</label>
+        <input type="text" id="recipe-name" name="recipe-name" placeholder="Enter the recipe name" required />
+
+        <label for="difficulty">Difficulty Level</label>
+        <select id="difficulty" name="difficulty" required>
+            <option value="Easy">Easy</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard">Hard</option>
+        </select>
+
+        <label for="prep-time">Preparation Time (in minutes)</label>
+        <input type="number" id="prep-time" name="prep-time" placeholder="e.g., 30" required />
+
+        <label for="short-description">Short Description</label>
+        <textarea id="short-description" name="short-description" placeholder="Brief description of the recipe" required></textarea>
+
+        <label for="ingredients">Ingredients (comma-separated)</label>
+        <textarea id="ingredients" name="ingredients" placeholder="e.g., flour, sugar, eggs" required></textarea>
+
+        <label for="instructions">Instructions</label>
+        <textarea id="instructions" name="instructions" placeholder="Step-by-step instructions" required></textarea>
+
+        <label for="recipe-image">Upload Recipe Image</label>
+        <input type="file" id="recipe-image" name="recipe-image" accept="image/*" required />
+
+        <button type="submit" class="submit-button">Submit Recipe</button>
+    </form>
+</section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Reciden | All Rights Reserved</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
