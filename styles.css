@@ -571,6 +571,42 @@ header {
     background-color: #f15a24;
 }
 
+/* Search Bar */
+#recipe-search {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+#recipe-search:focus {
+    border-color: #ff6f61;
+    box-shadow: 0px 0px 10px rgba(255, 111, 97, 0.5);
+}
+
+/* Filter Dropdown */
+#chef-filter {
+    width: 200px;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+#chef-filter:hover {
+    border-color: #ff6f61;
+}
+
+
 /* Submit Recipes Section */
 .submit-recipes-section {
     background-image: url('https://static.vecteezy.com/system/resources/previews/008/660/558/non_2x/organic-food-background-hand-drawn-concept-free-vector.jpg');
@@ -654,6 +690,73 @@ header {
     background-color: #001d3d;
 }
 
+/* About Us Section */
+.about-us {
+  background-color: #fefae0; /* Light beige background to match theme */
+  padding: 4rem 2rem;
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  align-items: center; /* Center content vertically */
+}
+
+.about-us-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 2rem;
+  width: 100%;
+}
+
+.about-us-content {
+  flex: 1;
+}
+
+.about-us-content h2 {
+  font-size: 3.5rem;
+  color: #001d3d; /* Navy blue */
+  margin-bottom: 1rem;
+  font-family: 'Playfair Display', serif;
+}
+
+.about-us-content p {
+  font-size: 1.5rem;
+  color: #333333; /* Dark gray for text */
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  font-family: 'Crimson Pro', serif;
+}
+
+.btn-about {
+  display: inline-block;
+  background-color: #03045e; /* Navy blue button */
+  color: #ffffff;
+  padding: 0.4rem 1rem; /* Reduced padding for smaller height */
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+
+.btn-about:hover {
+  background-color: #001d3d;
+  color: #ffffff;
+}
+
+.about-us-image {
+  flex: 1;
+  padding: 40px;
+}
+
+.about-us-image img {
+  max-width: 100%;
+  border-radius: 100px;
+}
+
 
 /* Footer Section */
 footer {
@@ -661,4 +764,111 @@ footer {
     color: #ffffff; /* Footer text color */
     text-align: center;
     padding: 10px;
+}
+
+/* Modal styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fefae0;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content h2 {
+    font-family: 'Playfair Display', serif;
+    color: #000814;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: #4a4a4a;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.btn {
+    background-color: #03045e;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+.btn:hover {
+    background-color: #001d3d; /* Darker shade on hover */
+    color: #ffffff; /* Yellow text on hover */
+}
+
+.signup-text {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #4a4a4a;
+}
+
+.signup-text a {
+    color: #003566;
+    text-decoration: none;
+}
+
+.signup-text a:hover {
+    text-decoration: underline;
+}
+
+/* Close button styling */
+.close-btn {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background-color: #001d3d;
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.8em;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    z-index: 1100;
+}
+
+.close-btn:hover {
+    background-color: #f15a24;
+    transform: scale(1.2);
+    transition: transform 0.2s ease, background-color 0.2s ease;
 }

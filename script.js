@@ -1,6 +1,3 @@
-document.querySelector('.cta-button').addEventListener('click', () => {
-    document.querySelector('#recipes').scrollIntoView({ behavior: 'smooth' });
-});
 
 // Scroll functionality for the recipe carousel
 const recipesContainer = document.querySelector('.recipes-container');
@@ -91,6 +88,28 @@ function updateRecipeSection() {
     });
 }
 
+// Recipe filtering function
+function filterRecipes() {
+    const searchQuery = document.getElementById('recipe-search').value.toLowerCase();
+    const selectedChef = document.getElementById('chef-filter').value.toLowerCase();
+    const recipes = document.querySelectorAll('.recipe-card');
+
+    recipes.forEach(recipe => {
+        const recipeName = recipe.querySelector('h3').textContent.toLowerCase();
+        const chefName = recipe.getAttribute('data-chef').toLowerCase();
+
+        // Check if recipe matches search query and chef filter
+        const matchesSearch = recipeName.includes(searchQuery);
+        const matchesChef = selectedChef === "" || chefName === selectedChef;
+
+        if (matchesSearch && matchesChef) {
+            recipe.style.display = 'block';
+        } else {
+            recipe.style.display = 'none';
+        }
+    });
+}
+
 // Display modal with recipe details
 function showCulinaryBox(recipeId) {
     const recipe = recipes[recipeId];
@@ -137,6 +156,7 @@ function closeCulinaryBox() {
 }
 
 // Add new recipe form submission
+// Add new recipe form submission
 document.getElementById('recipe-form').addEventListener('submit', function (event) {
     event.preventDefault();
 
@@ -149,6 +169,15 @@ document.getElementById('recipe-form').addEventListener('submit', function (even
     const instructions = document.getElementById('instructions').value.split('.').map(i => i.trim());
     const recipeImage = URL.createObjectURL(document.getElementById('recipe-image').files[0]);
 
+    // Check if recipe already exists
+    for (let key in recipes) {
+        if (recipes[key].name.toLowerCase() === recipeName.toLowerCase()) {
+            showCustomAlert(`Recipe "${recipeName}" already exists!`);
+            return;
+        }
+    }
+
+    // If recipe does not exist, add it
     const newRecipeId = Date.now().toString();
     recipes[newRecipeId] = {
         name: recipeName,
@@ -166,6 +195,7 @@ document.getElementById('recipe-form').addEventListener('submit', function (even
     this.reset();
 });
 
+
 // Initialize recipe section
 updateRecipeSection();
 
@@ -174,7 +204,6 @@ updateRecipeSection();
 function addToMealPlan(recipeName) {
     const mealPlanList = document.getElementById('meal-plan-list');
     const existingItems = mealPlanList.getElementsByTagName('li');
-
     // Check if meal plan already has 5 meals
     if (existingItems.length >= 4) {
         showCustomAlert('You can only have 4 Meals in your Meal Plan!');
@@ -193,6 +222,7 @@ function addToMealPlan(recipeName) {
     const newListItem = document.createElement('li');
     newListItem.textContent = recipeName;
     mealPlanList.appendChild(newListItem);
+    showCustomAlert(`${recipeName} is added to your meal plan!`);
 }
 
 // Function to show custom alert
@@ -208,12 +238,20 @@ function closeAlert() {
 }
 
 // Clear meal plan list and reset the counter
+// Clear meal plan list and reset the counter
 function clearMealPlan() {
     const mealPlanList = document.getElementById('meal-plan-list');
+
+    // Check if the meal plan is already empty
+    if (mealPlanList.children.length === 0) {
+        showCustomAlert('No Plans Available!');
+        return;
+    }
+
     mealPlanList.innerHTML = ''; // Clear all items
-    // Optional: Hide the custom alert when clearing the list
-    closeAlert();
+    closeAlert(); // Hide the custom alert (optional)
 }
+
 
 
 // Custom alert functions
@@ -226,3 +264,29 @@ function showCustomAlert(message) {
 
 // Initialize the recipe section
 updateRecipeSection();
+
+
+// Show Login Modal
+function openLoginModal() {
+    document.getElementById('login-modal').style.display = 'flex';
+}
+
+// Close Login Modal
+function closeLoginModal() {
+    document.getElementById('login-modal').style.display = 'none';
+}
+
+// Handle Login Form Submission
+document.getElementById('login-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    if (username === 'admin' && password === 'password') {
+        closeLoginModal();
+        showCustomAlert('Login successful!');
+    } else {
+        showCustomAlert('Invalid username or password !!');
+    }
+});

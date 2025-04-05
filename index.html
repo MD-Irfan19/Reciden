@@ -23,6 +23,7 @@
                 <li><a href="#meal-planner">Meal Plan</a></li>
                 <li><a href="#submit-recipes">Submit Recipes</a></li>
                 <li><a href="#about-us">About Us</a></li>
+              <!--<li><a href="#contact">Contact</a></li> -->
             </ul>
         </nav>
     </header>
@@ -31,71 +32,82 @@
     <section class="hero" id="home">
         <h1>Discover and Share Recipes with <span>Reciden</span></h1>
         <p>Explore delicious recipes, meal plans, and more. Create your own culinary story!</p>
-        <button class="cta-button">Get Recipes</button>
+        <button class="cta-button" onclick="openLoginModal()">Get Started</button>
+
     </section>
 
     <!-- Recipe Section -->
-    <section id="recipes" class="recipe-section">
-        <h2>Recipes</h2>
-        <div class="recipe-carousel">
-            <button class="arrow left-arrow" onclick="scrollLeft()">←</button>
-            <div class="recipes-container">
-                <!-- Recipe Cards -->
-                <div class="recipe-card">
-                    <img src="https://via.placeholder.com/300" alt="Recipe 1 Image">
-                    <div class="recipe-info">
-                        <h3>Bruschetta with Avocado and Egg</h3>
-                        <p class="author">- Mad</p>
-                        <div class="details">
-                            <span>Easy</span>
-                            <span>10</span>
-                            
-                        </div>
-                        <p class="description">This bruschetta is a light and stylish breakfast, perfect for a quick meal.</p>
-                        <div class="actions">
-                            <button class="view-btn" data-recipe-id="1">View Meal</button>
-                            <button class="add-btn" onclick="addToMealPlan('Bruschetta with Avocado and Egg')">Add to Meal Plan</button>
-                        </div>
+ <section id="recipes" class="recipe-section">
+    <h2>Recipes</h2>
+
+    <!-- Search Bar -->
+    <input type="text" id="recipe-search" placeholder="Search recipes..." onkeyup="filterRecipes()">
+
+    <!-- Chef Filter Dropdown -->
+    <select id="chef-filter" onchange="filterRecipes()">
+        <option value="">All Chefs</option>
+        <option value="Mad">Chef A</option>
+        <option value="MD">Chef B</option>
+        <option value="Maddy">Chef C</option>
+    </select>
+
+    <div class="recipe-carousel">
+        <button class="arrow left-arrow" onclick="scrollLeft()">←</button>
+        <div class="recipes-container">
+            <!-- Recipe Cards -->
+            <div class="recipe-card" data-chef="Mad">
+                <img src="https://via.placeholder.com/300" alt="Recipe 1 Image">
+                <div class="recipe-info">
+                    <h3>Bruschetta with Avocado and Egg</h3>
+                    <p class="author">- Chef A</p>
+                    <div class="details">
+                        <span>Easy</span>
+                        <span>10</span>
                     </div>
-                </div>
-                <div class="recipe-card">
-                    <img src="https://via.placeholder.com/300" alt="Recipe 2 Image">
-                    <div class="recipe-info">
-                        <h3>Cheese Soufflé</h3>
-                        <p class="author">- MD</p>
-                        <div class="details">
-                            <span>Easy</span>
-                            <span>15</span>
-                            
-                        </div>
-                        <p class="description">This cheese soufflé is an easy, quick, and tasty breakfast.</p>
-                        <div class="actions">
-                            <button class="view-btn" data-recipe-id="2">View Meal</button>
-                            <button class="add-btn" onclick="addToMealPlan('Cheese Soufflé')">Add to Meal Plan</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="recipe-card">
-                    <img src="https://via.placeholder.com/300" alt="Recipe 3 Image">
-                    <div class="recipe-info">
-                        <h3>Pancakes</h3>
-                        <p class="author">- Maddy</p>
-                        <div class="details">
-                            <span>Easy</span>
-                            <span>20</span>
-                            
-                        </div>
-                        <p class="description">These pancakes are perfect for breakfast or a snack.</p>
-                        <div class="actions">
-                            <button class="view-btn" data-recipe-id="3">View Meal</button>
-                            <button class="add-btn" onclick="addToMealPlan('Pancakes')">Add to Meal Plan</button>
-                        </div>
+                    <p class="description">This bruschetta is a light and stylish breakfast, perfect for a quick meal.</p>
+                    <div class="actions">
+                        <button class="view-btn" data-recipe-id="1">View Meal</button>
+                        <button class="add-btn" onclick="addToMealPlan('Bruschetta with Avocado and Egg')">Add to Meal Plan</button>
                     </div>
                 </div>
             </div>
-            <button class="arrow right-arrow" onclick="scrollRight()">→</button>
+            <div class="recipe-card" data-chef="MD">
+                <img src="https://via.placeholder.com/300" alt="Recipe 2 Image">
+                <div class="recipe-info">
+                    <h3>Cheese Soufflé</h3>
+                    <p class="author">- Chef B</p>
+                    <div class="details">
+                        <span>Easy</span>
+                        <span>15</span>
+                    </div>
+                    <p class="description">This cheese soufflé is an easy, quick, and tasty breakfast.</p>
+                    <div class="actions">
+                        <button class="view-btn" data-recipe-id="2">View Meal</button>
+                        <button class="add-btn" onclick="addToMealPlan('Cheese Soufflé')">Add to Meal Plan</button>
+                    </div>
+                </div>
+            </div>
+            <div class="recipe-card" data-chef="Maddy">
+                <img src="https://via.placeholder.com/300" alt="Recipe 3 Image">
+                <div class="recipe-info">
+                    <h3>Pancakes</h3>
+                    <p class="author">- Chef C</p>
+                    <div class="details">
+                        <span>Easy</span>
+                        <span>20</span>
+                    </div>
+                    <p class="description">These pancakes are perfect for breakfast or a snack.</p>
+                    <div class="actions">
+                        <button class="view-btn" data-recipe-id="3">View Meal</button>
+                        <button class="add-btn" onclick="addToMealPlan('Pancakes')">Add to Meal Plan</button>
+                    </div>
+                </div>
+            </div>
         </div>
-    </section>
+        <button class="arrow right-arrow" onclick="scrollRight()">→</button>
+    </div>
+</section>
+
 
         <!-- Your Meal Plan Section -->
         <section id="meal-planner" class="meal-planner-section">
@@ -118,13 +130,6 @@
         </div>
     </div>
     
-    <!-- Custom Alert Modal -->
-<div id="custom-alert" class="custom-alert">
-    <div class="alert-content">
-        <p id="alert-message"></p>
-        <button class="close-alert" onclick="closeAlert()">OK</button>
-    </div>
-</div>
 
           <section id="submit-recipes" class="submit-recipes-section">
     <h1>Submit Recipes</h1>
@@ -160,11 +165,54 @@
         <button type="submit" class="submit-button">Submit Recipe</button>
     </form>
 </section>
+          
+          <section class="about-us" id="about-us">
+  <div class="about-us-container">
+    <div class="about-us-content">
+      <h2>About Us</h2>
+      <p>
+        Welcome to our world of culinary exploration! Our mission is to inspire and empower you to create unforgettable meals with ease. From recipes to meal planning, we're here to make cooking enjoyable and accessible for everyone.
+      </p>
+      <a href="#learn-more" class="btn-about">Contact info</a>
+    </div>
+    <div class="about-us-image">
+      <img src="https://i.ibb.co/2KgT778/blueberries-on-top-of-pancakes.webp" alt="About Us Image">
+    </div>
+  </div>
+</section>
+
 
     <!-- Footer Section -->
     <footer>
         <p>&copy; 2024 Reciden | All Rights Reserved</p>
     </footer>
+
+          <!-- Login Modal -->
+<div id="login-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeLoginModal()">×</span>
+        <h2>Log-in</h2>
+        <form id="login-form">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter your username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="btn login-btn">Log-in</button>
+        </form>
+        <p class="signup-text">Don't have an account? <a href="#">Sign up</a></p>
+    </div>
+</div>
+              <!-- Custom Alert Modal -->
+<div id="custom-alert" class="custom-alert">
+    <div class="alert-content">
+        <p id="alert-message"></p>
+        <button class="close-alert" onclick="closeAlert()">OK</button>
+    </div>
+</div>
 
     <script src="script.js"></script>
 </body>
